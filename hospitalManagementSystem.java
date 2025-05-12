@@ -193,8 +193,12 @@ public class HospitalManagementSystem{
 					
 				}return count;
 			}
-//--From here going onwards some parts of this main method was no longer written by me but take from different websites--
-  //
+			// NOTE:
+			// The main method and menu system below were generated with assistance from ChatGPT.
+			// I used it to understand how to implement menu-driven programs in Java.
+			// The rest of the code was written by me.
+
+
 			public static void main(String[] args) {
 			        HospitalManagementSystem hospital = new HospitalManagementSystem();
 			        Scanner scanner = new Scanner(System.in);
