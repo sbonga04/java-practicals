@@ -3,11 +3,11 @@
 //4323535
 //CSC211 _PRAC-2
 
-public class Node {
-	Patient data;
-	Node link;
+public class node {
+	patient data;
+	node link;
 	
-	public Node(Patient val) {
+	public node(patient val) {
 		this.data = val;
 		this.link = null;
 	}
