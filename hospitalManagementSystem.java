@@ -1,19 +1,17 @@
-//Mkhize 
+//Mkhize
 //Sbongumusa 
 //4323535
 //CSC211 _PRAC-2
 
 
-
-
 import java.util.Scanner;
 
-public class HospitalManagementSystem{
-		public Node headNode;
-		public Node lastNode;
-		public void admitPatient(Patient newPatient) {
-			Node newNode = new Node(newPatient);
-			
+public class hospitalManagementSystem{
+		public node headNode;
+		public node lastNode;
+		public void admitPatient(patient newPatient) {
+			node newNode = new node(newPatient);
+
 			if (headNode == null) {
 				headNode = newNode;
 				lastNode = newNode;
@@ -24,9 +22,9 @@ public class HospitalManagementSystem{
 			System.out.println("New patient admitted " + newPatient.getName());
 		}
 		
-		public void admitBefore(Patient newPatient, int patientID) {
+		public void admitBefore(patient newPatient, int patientID) {
 			
-			Node newNode = new Node(newPatient);
+			node newNode = new node(newPatient);
 			
 			if (headNode == null) {
 				
@@ -39,12 +37,12 @@ public class HospitalManagementSystem{
 			if (headNode.data.getPatientID() == patientID) {
 				newNode.link = headNode;
 				headNode = newNode;
-				System.out.println("Patinet has now been added before the first ");
+				System.out.println("Patient has now been added before the first ");
 				//lastNode = newNode;
 				return;
 			}
 			
-			Node temp = headNode ;
+			node temp = headNode ;
 			while (temp.link != null && temp.link.data.getPatientID() != patientID) {
 				temp = temp.link;	
 				
@@ -59,60 +57,25 @@ public class HospitalManagementSystem{
 			}
 		}
 			
-			public Patient searchPatient(int patientID) {
+			public void searchPatient(int patientID) {
 				
 				if (headNode == null) {
 					System.out.println("No patients available");
-					return null;
+					return;
 				} 
 				
-				Node temp = headNode;
+				node temp = headNode;
 				while(temp != null) {
 					if (temp.data.getPatientID() == patientID) {
 						System.out.println("Patient availabe: " + temp.data.getName());
-						return temp.data;
+						return;
 					}
 					temp = temp.link;
 				}
 				
 				System.out.println("Patient is not available: " + patientID);
-				return null;
-		}
-		/*	public void dischargePatient(int PatientID) {
+			}
 
-				
-	
-			    if (headNode.data.getPatientID() == PatientID) {
-			    	
-			        System.out.println(" Patient " + headNode.data.getName() + " discharged.");
-			        headNode = headNode.link;
-			        
-			        if (headNode == null) {
-			        	lastNode = null;
-			        }
-			        return;
-			    }
-			    Node temp = headNode;
-			    
-			    if (temp.link != null) {
-			    	System.out.println("Patient  has been released: " + temp.link.data.getName());
-			    	temp.link = temp.link.link;
-			    	
-			    	if (temp.link == null) {
-			    		lastNode = temp;
-			    	}
-			    	
-			    }else 
-			    {
-			    	System.out.println("patient is not available " + PatientID );
-			    }
-			    while(temp.link != null && temp.link.data.getPatientID() != PatientID) {
-			    	temp = temp.link;
-			    }
-			    if (headNode == null) {
-			    	System.out.println("Patinets are not available");
-			    }
-			}*/
 			public void dischargePatient(int patientID) {
 			    if (headNode == null) {
 			        System.out.println("No patients available!");
@@ -128,7 +91,7 @@ public class HospitalManagementSystem{
 			        return;
 			    }
 
-			    Node temp = headNode;
+			    node temp = headNode;
 
 			    while (temp.link != null && temp.link.data.getPatientID() != patientID) {
 			        temp = temp.link;
@@ -153,7 +116,7 @@ public class HospitalManagementSystem{
 					return;
 				}
 				
-				Node temp = headNode;
+				node temp = headNode;
 				System.out.println("Patients currently in the clinic");
 				
 					while(temp != null) {
@@ -167,13 +130,13 @@ public class HospitalManagementSystem{
 	
 			}public void sortRecords() {
 				
-				Node thisNode = headNode;
+				node thisNode = headNode;
 				while (thisNode != null) {
-					Node nextNode = thisNode.link;
+					node nextNode = thisNode.link;
 					
 					while(nextNode != null) {
 						if (thisNode.data.getPatientID() >= nextNode.data.getPatientID()) {
-							Patient temp = thisNode.data;
+							patient temp = thisNode.data;
 							thisNode.data = nextNode.data;
 							nextNode.data = temp;
 						}
@@ -186,7 +149,7 @@ public class HospitalManagementSystem{
 			
 			public int totalPatients() {
 				int count = 0 ;
-				Node currentNode = headNode;
+				node currentNode = headNode;
 				while (currentNode != null) {
 					count ++;
 					currentNode = currentNode.link;
@@ -200,7 +163,7 @@ public class HospitalManagementSystem{
 
 
 			public static void main(String[] args) {
-			        HospitalManagementSystem hospital = new HospitalManagementSystem();
+			        hospitalManagementSystem hospital = new hospitalManagementSystem();
 			        Scanner scanner = new Scanner(System.in);
 			        
 			        while (true) {
@@ -234,7 +197,7 @@ public class HospitalManagementSystem{
 			            	System.out.print("Enter the patient ID: ");
 			            	int patientID = scanner.nextInt();  
 
-			            	hospital.admitPatient(new Patient(namePatient, AgePatient, doctor, patientID));
+			            	hospital.admitPatient(new patient(namePatient, AgePatient, doctor, patientID));
 			            	break;
 
 			            case 2:
@@ -247,7 +210,7 @@ public class HospitalManagementSystem{
 			            	System.out.println("Enter the patient ID");
 			            	patientID = scanner.nextInt();
 			            	
-			            	hospital.admitPatient(new Patient(namePatient, AgePatient, doctor, patientID));
+			            	hospital.admitPatient(new patient(namePatient, AgePatient, doctor, patientID));
 			            	break;
 			            	
 			            case 3:
@@ -275,6 +238,7 @@ public class HospitalManagementSystem{
 			            	
 			            	System.out.println("Quiting process...");
 			            	System.out.println("Thank you for using our Sytem");
+							System.out.println("--------------------------------------------------------------");
 			            	return;
 			            	
 			            default:

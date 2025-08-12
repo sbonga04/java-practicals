@@ -3,13 +3,13 @@
 //4323535
 //CSC211 _PRAC-2
 
-public class Patient{
+	public class patient{
 		String name;
 		int age;
 		String doctor;
 		int patientID;
 		
-		public Patient(String name,int age,String doctor,int PatientID) {
+		public patient(String name,int age,String doctor,int PatientID) {
 			this.name = name;
 			this.age = age;
 			this.doctor = doctor;
